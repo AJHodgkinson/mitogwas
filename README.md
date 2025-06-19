@@ -6,7 +6,9 @@ A nextflow pipeline for running eQTL analysis of gene and RNA modifications enco
 
 This pipeline assumes that RNA sequencing data has been alinged to a reference genome with STAR (with --quantmode used), that RNAseQC has been run on each sample (with results in a subdirectory called RNAseQC) and that mitopileup.pl (available in this repository) has been run on each sample, with an output name the same as the RNA name.  As an example, if starting with paired data files: 
 
-sample1.1.fastq.gz and sample1.2.fastq.gz, you should run:
+sample1.1.fastq.gz and sample1.2.fastq.gz
+
+You should run:
 
 mkdir RNAseQC
 
