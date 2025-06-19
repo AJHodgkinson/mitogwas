@@ -1,14 +1,27 @@
-# mitogwas
+## mitogwas
 
 A nextflow pipeline for running eQTL analysis of gene and RNA modifications encoded in mtDNA.
 
-To use this pipeline, you must first align your data to a reference genome with STAR
+# Before using mitogwas:
 
-Usage:
+This pipeline assumes that RNA sequencing data has been alinged to a reference genome with STAR (with --quantmode used), that RNAseQC has been run on each sample (with results in a subdirectory called RNAseQC) and that mitopileup.pl (available in this repository) has been run on each sample, with an output name the same as the RNA name.  As an example, if starting with paired data files: test.1.fastq.gz and test.2.fastq.gz, you should run:
+
+mkdir RNAseQC
+STAR
+perl
+
+Repeat this for every sample in your dataset, and then follow the instructions below to run mitogwas.
+
+# Pre-requististes:
+
+Nextflow
+Docker/Sigularity
+
+# Usage:
 
 nextflow run main.nf --rnaDir "RNAseqDIR" --bed "BEDFILE" --bim "BIMFILE" --fam "FAMFILE" --infoSheet "INFOSHEET" --gtfFile "GTFFILE" --dataName "NAME" -profile singularity/docker
 
-Options:
+# Options:
 
 --rnaDir "RNAseqDIR" : Full path to directory containing gene count files.  This directory should also contain a subdirectory called RNAseQC, which contains output of RNAseQC run on STAR alignment files.
 
