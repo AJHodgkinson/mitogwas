@@ -12,9 +12,11 @@ You should run:
 
 mkdir RNAseQC
 
-STAR
+STAR --runThreadN <num_threads> --genomeDir <path_to_genome_index> --readFilesIn <read1.fastq> [<read2.fastq>] --quantMode GeneCounts --outFileNamePrefix <output_prefix>
 
-perl
+perl pileupAlleleExtractor_mito.pl --Bam output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam --MinQ 23 --RefFasta <path_to_reference_fasta> --Out <output_prefix>
+
+rnaseqc <path_to_gtf_file> output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam RNAseQC
 
 Repeat this for every sample in your dataset, and then follow the instructions below to run mitogwas.
 
@@ -46,6 +48,3 @@ nextflow run main.nf --rnaDir "RNAseqDIR" --bed "BEDFILE" --bim "BIMFILE" --fam 
 
 -profile singularity/docker : use either singularity or docker for the machine image
 
-Pre-conditions:
-
-Before running this pipeline, you should align your data to a reference genome using STAR. 
