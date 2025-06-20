@@ -4,11 +4,9 @@ A nextflow pipeline for running eQTL analysis of gene and RNA modifications enco
 
 ## Before using mitogwas:
 
-This pipeline assumes that RNA sequencing data has been alinged to a reference genome with STAR (with --quantmode used), that RNAseQC has been run on each sample (with results in a subdirectory called RNAseQC) and that mitopileup.pl (available in this repository) has been run on each sample, with an output name the same as the RNA name.  As an example, if starting with paired data files: 
+This pipeline assumes that RNA sequencing data has been alinged to a reference genome with STAR (with --quantmode used), that RNAseQC has been run on each sample (with results in a subdirectory called RNAseQC) and that pileupAlleleExtractor_mito.pl (available in this repository) has been run on each sample, with an output name the same as the RNA name.
 
-sample1.1.fastq.gz and sample1.2.fastq.gz
-
-You should run:
+As an example, you should run the following for each RNA sequencing dataset (you can also include optional filtering steps after alignment):
 
 mkdir RNAseQC
 
@@ -17,8 +15,6 @@ STAR --runThreadN <num_threads> --genomeDir <path_to_genome_index> --readFilesIn
 perl pileupAlleleExtractor_mito.pl --Bam output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam --MinQ 23 --RefFasta <path_to_reference_fasta> --Out <output_prefix>
 
 rnaseqc <path_to_gtf_file> output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam RNAseQC
-
-Repeat this for every sample in your dataset, and then follow the instructions below to run mitogwas.
 
 ## Pre-requististes:
 
