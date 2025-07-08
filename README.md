@@ -8,13 +8,13 @@ This pipeline assumes that RNA sequencing data has been alinged to a reference g
 
 As an example, you should run the following for each RNA sequencing dataset (you can also include optional filtering steps after alignment):
 
-mkdir RNAseQC
+```mkdir RNAseQC```
 
-STAR --runThreadN <num_threads> --genomeDir <path_to_genome_index> --readFilesIn <read1.fastq> [<read2.fastq>] --quantMode GeneCounts --outFileNamePrefix <output_prefix>
+```STAR --runThreadN <num_threads> --genomeDir <path_to_genome_index> --readFilesIn <read1.fastq> [<read2.fastq>] --quantMode GeneCounts --outFileNamePrefix <output_prefix>```
 
-perl pileupAlleleExtractor_mito.pl --Bam output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam --MinQ 23 --RefFasta <path_to_reference_fasta> --Out <output_prefix>
+```perl pileupAlleleExtractor_mito.pl --Bam output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam --MinQ 23 --RefFasta <path_to_reference_fasta> --Out <output_prefix>```
 
-rnaseqc <path_to_gtf_file> output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam RNAseQC
+```rnaseqc <path_to_gtf_file> output_prefix.Aligned.sortedByCoord.out.PP.UM.MT.bam RNAseQC```
 
 ## Pre-requististes:
 
@@ -24,7 +24,7 @@ Docker/Sigularity
 
 ## Usage:
 
-nextflow run main.nf --rnaDir "RNAseqDIR" --bed "BEDFILE" --bim "BIMFILE" --fam "FAMFILE" --infoSheet "INFOSHEET" --gtfFile "GTFFILE" --dataName "NAME" -profile singularity/docker
+```nextflow run main.nf --rnaDir "RNAseqDIR" --bed "BEDFILE" --bim "BIMFILE" --fam "FAMFILE" --infoSheet "INFOSHEET" --gtfFile "GTFFILE" --dataName "NAME" -profile singularity/docker```
 
 ## Options:
 
