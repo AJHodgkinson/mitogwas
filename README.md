@@ -20,7 +20,7 @@ As an example, you should run the following for each RNA sequencing dataset (you
 
 Nextflow
 
-Docker/Sigularity
+Docker/Singularity
 
 ## Usage:
 
